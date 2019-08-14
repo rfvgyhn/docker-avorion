@@ -24,16 +24,15 @@ build: info
 		-t $(DOCKER_IMAGE):$(DOCKER_TAG) .
 
 release: build info
-	# Tag image as latest
 	docker tag $(DOCKER_IMAGE):$(DOCKER_TAG) $(DOCKER_IMAGE):latest
+	
+ifeq ($(CHANNEL), stable)
+	docker tag $(DOCKER_IMAGE):$(DOCKER_TAG) $(DOCKER_IMAGE):$(CHANNEL)
+	docker push $(DOCKER_IMAGE):$(CHANNEL)
+endif
 
-	# Push to DockerHub
 	docker push $(DOCKER_IMAGE):$(DOCKER_TAG)
 	docker push $(DOCKER_IMAGE):latest
-
-	ifeq ($(CHANNEL), stable)
-		docker push $(DOCKER_IMAGE):$(CHANNEL)
-	endif
 
 info:
 	@echo Docker Image: $(DOCKER_IMAGE):$(DOCKER_TAG)
