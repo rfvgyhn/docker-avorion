@@ -18,7 +18,7 @@ docker run -d --name avorion -p 27000:27000 -p 27000:27000/udp -p 27003:27003/ud
 
 ### Volumes
 
-* `/data` mount for galaxy save and server configuration
+* `/home/steam/.avorion/galaxies/avorion_galaxy` mount for galaxy save and server configuration
 
 ```
 docker run -d --name avorion \
@@ -27,13 +27,13 @@ docker run -d --name avorion \
    -p 27003:27003/udp \
    -p 27020:27020/udp \
    -p 27021:27021/udp \
-   -v /host/path/saves:/data \
+   -v /host/path/saves:/home/steam/.avorion/galaxies/avorion_galaxy \
    rfvgyhn/avorion
 ```
 
 ### Configuration
 
-Default settings will be generated and placed in the `/data` volume. To make changes, stop the container, modify the desired files and then restart the container.
+Default settings will be generated and placed in the `/home/steam/.avorion/galaxies/avorion_galaxy` volume. To make changes, stop the container, modify the desired files and then restart the container.
 
 If you enable RCON in `settings.ini`, make sure you also forward the port in docker (`-p 27015:27015`).
 

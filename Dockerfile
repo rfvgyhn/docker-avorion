@@ -28,8 +28,7 @@ RUN set -x \
 RUN set -x \
     && useradd -m steam \
     && mkdir -p /home/steam/.avorion/galaxies/avorion_galaxy \
-    && chown -R steam:steam /home/steam \
-    && ln -s /home/steam/.avorion/galaxies/avorion_galaxy /data
+    && chown -R steam:steam /home/steam
 WORKDIR /home/steam/avorion-dedicated
 COPY --from=build --chown=steam /home/steam/avorion-dedicated .
 USER steam
