@@ -7,6 +7,7 @@ FROM cm2network/steamcmd:steam as beta
 ONBUILD ENV BETA=" -beta beta"
 
 FROM ${CHANNEL} as build
+ARG VERSION
 RUN set -x \
 	&& "${STEAMCMDDIR}/steamcmd.sh" \
 		+login anonymous \
@@ -41,8 +42,8 @@ EXPOSE 27020/udp
 EXPOSE 27021/udp
 
 ARG CREATED
-ARG SOURCE
 ARG REVISION
+ARG SOURCE
 ARG VERSION
 
 LABEL org.opencontainers.image.created=$CREATED
