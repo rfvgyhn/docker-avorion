@@ -1,6 +1,12 @@
-# Avorion Docker
+# Avorion Docker [![Docker Stars][4]][2] [![Docker Pulls][5]][2]
 
 [Avorion][0] dedicated server
+
+Branch | Size             | Version          
+-------|------------------|---------------
+latest | [![Size][6]][2]  | [![Version][7]][2]
+stable | [![Size][8]][2]  | [![Version][9]][2]
+beta   | [![Size][10]][2] | [![Version][11]][2]
 
 ## Usage
 
@@ -38,9 +44,18 @@ The `latest` tag will follow the latest [avorion server][1] release
 
 The `stable` tag will follow the latest stable (non-beta) [avorion server][1] release.
 
-You can specify a specific version using the available [tags][2]
+You can specify a specific version using the available [tags][3]
 
 
 [0]: https://www.avorion.net/
 [1]: https://www.avorion.net/forum/index.php/board,2.0.html
-[2]: https://cloud.docker.com/repository/docker/rfvgyhn/avorion/tags
+[2]: https://hub.docker.com/r/rfvgyhn/avorion
+[3]: https://hub.docker.com/r/rfvgyhn/avorion/tags
+[4]: https://img.shields.io/docker/stars/rfvgyhn/avorion.svg
+[5]: https://img.shields.io/docker/pulls/rfvgyhn/avorion.svg
+[6]: https://images.microbadger.com/badges/image/rfvgyhn/avorion.svg
+[7]: https://images.microbadger.com/badges/version/rfvgyhn/avorion:0.25.2.svg
+[8]: https://images.microbadger.com/badges/image/rfvgyhn/avorion:stable.svg
+[9]: https://images.microbadger.com/badges/version/rfvgyhn/avorion:0.25.2.svg
+[10]: https://images.microbadger.com/badges/image/rfvgyhn/avorion:0.25.2-beta.svg
+[11]: https://images.microbadger.com/badges/version/rfvgyhn/avorion:0.25.2-beta.svg
