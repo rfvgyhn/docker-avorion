@@ -1,0 +1,13 @@
+version: '3'
+services:
+    avorion:
+        image: rfvgyhn/avorion:stable
+        container_name: avorion
+        volumes:
+            - ./data:/home/steam/.avorion/galaxies/avorion_galaxy
+        ports:
+            - 27000:27000
+            - 27000:27000/udp
+            - 27003:27003/udp
+            - 27020:27020/udp
+            - 27021:27021/udp
