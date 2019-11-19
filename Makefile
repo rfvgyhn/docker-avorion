@@ -5,10 +5,12 @@ default: build
 CHANNEL = stable
 DOCKER_IMAGE ?= rfvgyhn/avorion
 VERSION ?= $(shell grep '$(CHANNEL):' version.txt | cut -d ' ' -f2)
+INSTALL_ARGS = 
 
 
 ifneq ($(CHANNEL), stable)
 	DOCKER_TAG = $(VERSION)-$(CHANNEL)
+	INSTALL_ARGS = -beta beta
 else
 	DOCKER_TAG = $(VERSION)
 endif
@@ -16,7 +18,7 @@ endif
 build: info
 	# Build Docker image
 	docker build \
-		--build-arg CHANNEL=$(CHANNEL) \
+		--build-arg INSTALL_ARGS="${INSTALL_ARGS}" \
 		--build-arg VERSION=$(VERSION) \
 		--build-arg CREATED=`date -u -Iseconds` \
 		--build-arg SOURCE=`git config --get remote.origin.url` \

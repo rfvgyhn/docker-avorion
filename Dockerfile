@@ -1,18 +1,11 @@
-ARG CHANNEL=stable
-
-FROM cm2network/steamcmd:steam as stable
-ONBUILD ENV BETA=""
-
-FROM cm2network/steamcmd:steam as beta
-ONBUILD ENV BETA=" -beta beta"
-
-FROM ${CHANNEL} as build
+FROM cm2network/steamcmd:steam as build
 ARG VERSION
+ARG INSTALL_ARGS
 RUN set -x \
 	&& "${STEAMCMDDIR}/steamcmd.sh" \
 		+login anonymous \
 		+force_install_dir /home/steam/avorion-dedicated \
-		+app_update 565060$BETA validate \
+		+app_update 565060 "${INSTALL_ARGS}" validate \
 		+quit
 
 FROM debian:stretch-slim
