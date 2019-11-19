@@ -5,7 +5,7 @@ RUN set -x \
 	&& "${STEAMCMDDIR}/steamcmd.sh" \
 		+login anonymous \
 		+force_install_dir /home/steam/avorion-dedicated \
-		+app_update 565060 "${INSTALL_ARGS}" validate \
+		+app_update 565060$INSTALL_ARGS validate \
 		+quit
 
 FROM debian:stretch-slim

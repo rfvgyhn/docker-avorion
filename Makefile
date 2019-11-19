@@ -18,7 +18,7 @@ endif
 build: info
 	# Build Docker image
 	docker build \
-		--build-arg INSTALL_ARGS="${INSTALL_ARGS}" \
+		--build-arg INSTALL_ARGS=" ${INSTALL_ARGS}" \
 		--build-arg VERSION=$(VERSION) \
 		--build-arg CREATED=`date -u -Iseconds` \
 		--build-arg SOURCE=`git config --get remote.origin.url` \
