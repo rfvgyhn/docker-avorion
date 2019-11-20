@@ -6,7 +6,7 @@ CHANNEL = stable
 DOCKER_IMAGE ?= rfvgyhn/avorion
 VERSION ?= $(shell grep '$(CHANNEL):' version.txt | cut -d ' ' -f2)
 INSTALL_ARGS = 
-
+BUILD_ARGS =
 
 ifneq ($(CHANNEL), stable)
 	DOCKER_TAG = $(VERSION)-$(CHANNEL)
@@ -23,6 +23,7 @@ build: info
 		--build-arg CREATED=`date -u -Iseconds` \
 		--build-arg SOURCE=`git config --get remote.origin.url` \
 		--build-arg REVISION=`git rev-parse --short HEAD` \
+		${BUILD_ARGS} \
 		-t $(DOCKER_IMAGE):$(DOCKER_TAG) .
 
 release: build info
