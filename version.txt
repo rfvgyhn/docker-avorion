@@ -1,2 +1,2 @@
-stable: 0.28.1
+stable: 0.29.5
 beta: 0.29.5
