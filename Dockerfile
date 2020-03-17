@@ -43,4 +43,12 @@ LABEL org.opencontainers.image.revision=$REVISION
 LABEL org.opencontainers.image.source=$SOURCE
 LABEL org.opencontainers.image.version=$VERSION
 
-ENTRYPOINT ["./server.sh"]
+# down here we are basically copying the server.sh, since that one does not `exec`
+# since now the AvorionServer is pid1 we can use `stop` commands since SIGTERM is passed through
+# SIGTERM on AvorionServer causes a clean shutdown with saving, graceful connection closing and everything
+
+# env from server.sh
+ENV LD_LIBRARY_PATH=/home/steam/avorion-dedicated/linux64
+# extra arguments can be supplied with the run command of your container runtime (equals the $@ of server.sh)
+ENTRYPOINT ["./bin/AvorionServer", "--galaxy-name", "avorion_galaxy"]
+
