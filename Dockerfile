@@ -7,6 +7,9 @@ RUN set -x \
 		+force_install_dir /home/steam/avorion-dedicated \
 		+app_update 565060$INSTALL_ARGS validate \
 		+quit
+WORKDIR /home/steam/avorion-dedicated
+RUN rm -r steamapps && \
+    rm launcher.sh steamclient.so
 
 FROM debian:stretch-slim
 LABEL org.opencontainers.image.title="Avorion Dedicated Server"
