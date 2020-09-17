@@ -9,7 +9,7 @@ RUN set -x \
 		+quit
 WORKDIR /home/steam/avorion-dedicated
 RUN rm -r steamapps && \
-    rm launcher.sh steamclient.so
+    rm launcher.sh
 
 FROM debian:stretch-slim
 LABEL org.opencontainers.image.title="Avorion Dedicated Server"
