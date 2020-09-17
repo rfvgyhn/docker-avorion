@@ -19,6 +19,7 @@ docker run -d --name avorion -p 27000:27000 -p 27000:27000/udp -p 27003:27003/ud
 ### Volumes
 
 * `/home/steam/.avorion/galaxies/avorion_galaxy` mount for galaxy save and server configuration
+* `/home/steam/.avorion/backups` mount for backups
 
 ```
 docker run -d --name avorion \
@@ -30,6 +31,8 @@ docker run -d --name avorion \
    -v /host/path/saves:/home/steam/.avorion/galaxies/avorion_galaxy \
    rfvgyhn/avorion
 ```
+
+Note that the container runs as non-root user 1000:1000. Make sure your mounted volume(s) have the correct permissions.
 
 ### Configuration
 
