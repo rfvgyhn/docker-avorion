@@ -51,7 +51,7 @@ LABEL org.opencontainers.image.version=$VERSION
 # SIGTERM on AvorionServer causes a clean shutdown with saving, graceful connection closing and everything
 
 # env from server.sh
-ENV LD_LIBRARY_PATH=/home/steam/avorion-dedicated/linux64
+ENV LD_LIBRARY_PATH="/home/steam/avorion-dedicated:/home/steam/avorion-dedicated/linux64"
 # extra arguments can be supplied with the run command of your container runtime (equals the $@ of server.sh)
 ENTRYPOINT ["./bin/AvorionServer", "--galaxy-name", "avorion_galaxy"]
 
