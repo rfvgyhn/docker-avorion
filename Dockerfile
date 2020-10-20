@@ -19,7 +19,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN set -x \
     && apt-get update \
     && apt-get install -y --no-install-recommends --no-install-suggests \
-        ca-certificates \
+        ca-certificates libsdl2-2.0-0 \
     && rm -rf /var/lib/apt/lists/*
 RUN set -x \
     && useradd -m steam \
