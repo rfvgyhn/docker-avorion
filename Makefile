@@ -37,5 +37,8 @@ endif
 	docker push $(DOCKER_IMAGE):$(DOCKER_TAG)
 	docker push $(DOCKER_IMAGE):latest
 
+	# https://github.com/christian-korneck/docker-pushrm
+	docker pushrm $(DOCKER_IMAGE)
+
 info:
 	@echo Docker Image: $(DOCKER_IMAGE):$(DOCKER_TAG)
