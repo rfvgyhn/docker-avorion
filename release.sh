@@ -25,7 +25,7 @@ stable() {
     sed -i "s/^stable.*$/stable: $version/" version.txt
     sed -i "s|^\[7\].*|[7]: https://img.shields.io/badge/v-$version-blue|" README.md
     sed -i "s|^\[9\].*|[9]: https://img.shields.io/badge/v-$version-blue|" README.md
-    tags+=("stable", "$version")
+    tags+=("stable" "$version")
 }
 
 build() {
