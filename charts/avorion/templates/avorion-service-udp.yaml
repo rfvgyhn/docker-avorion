@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: avorion-udp
+spec:
+  type: LoadBalancer
+  ports:
+    - name: 27000-udp
+      port: 27000
+      protocol: UDP
+      targetPort: 27000
+    - name: "27003"
+      port: 27003
+      protocol: UDP
+      targetPort: 27003
+    - name: "27020"
+      port: 27020
+      protocol: UDP
+      targetPort: 27020
+    - name: "27021"
+      port: 27021
+      protocol: UDP
+      targetPort: 27021
+  selector:
+    app: avorion
+status:
+  loadBalancer: {}

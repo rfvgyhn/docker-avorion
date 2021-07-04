@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  labels:
+    app: avorion
+  name: avorion
+spec:
+  serviceName: "avorion"
+  replicas: 1
+  selector:
+    matchLabels:
+      app: avorion
+  template:
+    metadata:
+      labels:
+        app: avorion  
+    spec:
+      {{- if .Values.hostname }}
+      nodeSelector:
+        kubernetes.io/hostname: {{ .Values.hostname }}
+      {{- end }}
+      containers:
+        - image: rfvgyhn/avorion:stable
+          name: avorion
+          ports:
+            - containerPort: 27000
+            - containerPort: 27000
+              protocol: UDP
+            - containerPort: 27003
+              protocol: UDP
+            - containerPort: 27020
+              protocol: UDP
+            - containerPort: 27021
+              protocol: UDP
+          resources: {}
+          volumeMounts:
+            - mountPath: /home/steam/.avorion/galaxies/avorion_galaxy
+              name: galaxy
+      restartPolicy: Always
+  volumeClaimTemplates:
+  - metadata:
+      name: galaxy
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 5Gi

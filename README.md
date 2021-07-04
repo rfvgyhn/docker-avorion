@@ -40,6 +40,12 @@ Default settings will be generated and placed in the `/home/steam/.avorion/galax
 
 If you enable RCON in `settings.ini`, make sure you also forward the port in docker (`-p 27015:27015`).
 
+### Helm
+
+```
+helm install avorion charts/avorion
+```
+
 ## Docker Images
 
 The `latest` tag will follow the latest [avorion server][1] release

@@ -1,0 +1,9 @@
+{
+    "workbench.colorTheme": "Default Dark+", 
+    "workbench.iconTheme": "vscode-icons",    
+    "editor.defaultFormatter": "esbenp.prettier-vscode", 
+    "vs-kubernetes": {
+        "vs-kubernetes.kubeconfig": "/scm/kubeconfig.yaml"
+    },
+    "workbench.sideBar.location": "right"
+} 

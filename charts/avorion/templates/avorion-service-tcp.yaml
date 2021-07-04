@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  name: avorion-tcp
+spec:
+  type: LoadBalancer
+  ports:
+    - name: "27000"
+      port: 27000
+      targetPort: 27000
+  selector:
+    app: avorion
+status:
+  loadBalancer: {}
