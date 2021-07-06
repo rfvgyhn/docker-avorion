@@ -43,7 +43,7 @@ If you enable RCON in `settings.ini`, make sure you also forward the port in doc
 ### Helm
 
 ```
-helm install avorion charts/avorion
+helm install avorion --set hostname=<your preferred host> charts/avorion
 ```
 
 ## Docker Images
