@@ -16,8 +16,15 @@ spec:
         app: avorion  
     spec:
       {{- if .Values.hostname }}
-      nodeSelector:
-        kubernetes.io/hostname: {{ .Values.hostname }}
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                - key: kubernetes.io/hostname
+                  operator: In
+                  values:
+                  - {{ .Values.hostname }}      
       {{- end }}
       containers:
         - image: rfvgyhn/avorion:stable
