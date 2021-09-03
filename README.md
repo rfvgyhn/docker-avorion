@@ -57,8 +57,8 @@ You can specify a specific version using the available [tags][3]
 [4]: https://img.shields.io/docker/stars/rfvgyhn/avorion.svg
 [5]: https://img.shields.io/docker/pulls/rfvgyhn/avorion.svg
 [6]: https://img.shields.io/docker/image-size/rfvgyhn/avorion/latest
-[7]: https://img.shields.io/badge/v-2.0.5.33661--beta-blue
+[7]: https://img.shields.io/badge/v-2.0.6.33751--beta-blue
 [8]: https://img.shields.io/docker/image-size/rfvgyhn/avorion/stable
 [9]: https://img.shields.io/badge/v-1.3.8.31187-blue
-[10]: https://img.shields.io/docker/image-size/rfvgyhn/avorion/2.0.5.33661-beta
-[11]: https://img.shields.io/badge/v-2.0.5.33661--beta-blue
+[10]: https://img.shields.io/docker/image-size/rfvgyhn/avorion/2.0.6.33751-beta
+[11]: https://img.shields.io/badge/v-2.0.6.33751--beta-blue
