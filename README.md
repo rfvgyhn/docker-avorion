@@ -32,7 +32,7 @@ docker run -d --name avorion \
    rfvgyhn/avorion
 ```
 
-Note that the container runs as non-root user 1000:1000. Make sure your mounted volume(s) have the correct permissions.
+Note that the container runs as non-root user 1000:1000. Make sure your mounted volume(s) have the correct permissions. (When running Docker in rootless mode, the user is remapped to a different id, usually 100999:100999)
 
 ### Configuration
 
