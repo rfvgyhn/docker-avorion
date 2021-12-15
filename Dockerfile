@@ -3,8 +3,8 @@ ARG VERSION
 ARG INSTALL_ARGS
 RUN set -x \
 	&& "${STEAMCMDDIR}/steamcmd.sh" \
-		+login anonymous \
 		+force_install_dir /home/steam/avorion-dedicated \
+		+login anonymous \
 		+app_update 565060$INSTALL_ARGS validate \
 		+quit
 WORKDIR /home/steam/avorion-dedicated
@@ -54,4 +54,3 @@ LABEL org.opencontainers.image.version=$VERSION
 ENV LD_LIBRARY_PATH="/home/steam/avorion-dedicated:/home/steam/avorion-dedicated/linux64"
 # extra arguments can be supplied with the run command of your container runtime (equals the $@ of server.sh)
 ENTRYPOINT ["./bin/AvorionServer", "--galaxy-name", "avorion_galaxy"]
-
