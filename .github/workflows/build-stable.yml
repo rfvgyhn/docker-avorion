@@ -37,7 +37,7 @@ jobs:
         
       - name: "Set environmental variables"
         run: |
-          echo "${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:stable" >> $TAG_NAME
+          echo "TAG_NAME=$REGISTRY/$IMAGE_NAME:stable" >> $GITHUB_ENV
 
       # Install the cosign tool except on PR
       # https://github.com/sigstore/cosign-installer
