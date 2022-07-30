@@ -19,7 +19,6 @@ env:
   REGISTRY: ghcr.io
   # github.repository as <account>/<repo>
   IMAGE_NAME: ${{ github.repository }}
-  TAG_NAME: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
 
 jobs:
@@ -35,6 +34,10 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        
+      - name: "Set environmental variables"
+        run: |
+          echo "${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:stable" >> $TAG_NAME
 
       # Install the cosign tool except on PR
       # https://github.com/sigstore/cosign-installer
@@ -66,7 +69,7 @@ jobs:
         with:
           context: .
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ env.TAG_NAME }}:stable
+          tags: ${{ env.TAG_NAME }}
           build-args: |
             INSTALL_ARGS=""
             VERSION="stable"
