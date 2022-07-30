@@ -22,6 +22,21 @@ env:
 
 
 jobs:
+  version: 
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get version
+        id: version
+        uses: addnab/docker-run-action@v3
+        with:
+          image: cm2network/steamcmd:steam
+          run: |
+            "${STEAMCMDDIR}/steamcmd.sh" +force_install_dir /home/steam/avorion-dedicated +login anonymous +app_update 565060$INSTALL_ARGS validate +quit
+            echo "::set-output name=version::$(/home/steam/avorion-dedicated/bin/AvorionServer --version"
+
+      - name: test
+        run: echo "${{ steps.version.outputs.version }}"
+
   stable:
     runs-on: ubuntu-latest
     permissions:
