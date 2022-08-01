@@ -1,4 +1,4 @@
-name: Build ghcr
+name: Build Docker
 
 # This workflow uses actions that are not certified by GitHub.
 # They are provided by a third-party and are governed by
@@ -10,9 +10,9 @@ on:
 
 env:
   # Use docker.io for Docker Hub if empty
-  REGISTRY: ghcr.io
+  GHCR: ghcr.io
   # github.repository as <account>/<repo>
-  IMAGE_NAME: ${{ github.repository }}
+  IMAGE_NAME: lightlike/avorion
 
 
 jobs:
@@ -39,24 +39,36 @@ jobs:
             "${STEAMCMDDIR}/steamcmd.sh" +force_install_dir /home/steam/avorion-dedicated +login anonymous +app_update 565060 validate +quit
             echo "::set-output name=version::$(/home/steam/avorion-dedicated/bin/AvorionServer --version)"
 
+      - name: Search for Tag in
+        id: tag
+        run: |
+          tag=git tag -l "v${{ steps.version.outputs.version }}"
+          if [ "$tag" == "${{ steps.version.outputs.version }}" ]; then
+            echo "::set-output name=exists::true"
+          else
+            echo "::set-output name=exists::false"
+          fi
+
+
       # Generate Docker Metadata
       - name: Docker meta
         id: meta
+        if: steps.tag.outputs.exists == false
         uses: docker/metadata-action@v4
         with:
           # list of Docker images to use as base name for tags
           images: |
-            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+            ${{ env.GHCR }}/${{ env.IMAGE_NAME }}
           # generate Docker tags based on the following events/attributes
           tags: |
             type=raw,value=${{ steps.version.outputs.version }}
             type=raw,value=stable
             type=raw,value=latest
 
-      # Login against a Docker registry except on PR
+      # Login against a Docker registry
       # https://github.com/docker/login-action
       - name: Log into registry ${{ env.REGISTRY }}
-        if: github.event_name != 'pull_request'
+        if: steps.tag.outputs.exists == false
         uses: docker/login-action@v2
         with:
           registry: ${{ env.REGISTRY }}
@@ -66,8 +78,11 @@ jobs:
       # Build and push Docker image with Buildx (don't push on PR)
       # https://github.com/docker/build-push-action
       - name: Set up Docker Buildx
+        if: steps.tag.outputs.exists == false
         uses: docker/setup-buildx-action@v2
+
       - name: Build and push Docker image
+        if: steps.tag.outputs.exists == false
         id: build-and-push
         uses: docker/build-push-action@v3
         with:
@@ -81,6 +96,7 @@ jobs:
       # Create tag for version
       # https://github.com/mathieudutour/github-tag-action
       - name: Tag Version
+        if: steps.tag.outputs.exists == false
         uses: mathieudutour/github-tag-action@v6.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
