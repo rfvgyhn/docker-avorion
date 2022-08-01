@@ -164,8 +164,7 @@ jobs:
           # generate Docker tags based on the following events/attributes
           tags: |
             type=raw,value=${{ steps.version.outputs.version }}
-            type=raw,value=stable
-            type=raw,value=latest
+            type=raw,value=beta
 
       # Login against a Docker registry
       # https://github.com/docker/login-action
