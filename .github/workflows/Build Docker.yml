@@ -42,6 +42,7 @@ jobs:
       - name: Search for Tag
         id: tag
         run: |
+          git fetch --tags
           tag=$(git tag -l "v${{ steps.version.outputs.version }}")
           echo "Tag: ${tag}"
           if [ "$tag" == "v${{ steps.version.outputs.version }}" ]; then
