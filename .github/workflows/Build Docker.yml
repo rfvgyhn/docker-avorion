@@ -211,3 +211,4 @@ jobs:
         with:
           tag: ${{ steps.tag_version.outputs.new_tag }}
           name: Beta ${{ steps.tag_version.outputs.new_tag }}
+          prerelease: true
