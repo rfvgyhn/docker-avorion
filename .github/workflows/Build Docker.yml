@@ -7,6 +7,8 @@ name: Build Docker
 
 on:
   workflow_dispatch:
+#  schedule:
+#  - cron:  '00 18 * * *'
 
 env:
   # Use docker.io for Docker Hub if empty

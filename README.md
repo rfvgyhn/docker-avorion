@@ -56,5 +56,5 @@ You can specify a specific version using the available [tags][3]
 [3]: https://hub.docker.com/r/rfvgyhn/avorion/tags
 [4]: https://img.shields.io/docker/stars/rfvgyhn/avorion.svg
 [5]: https://img.shields.io/docker/pulls/rfvgyhn/avorion.svg
-[6]: https://img.shields.io/github/v/release/lightlike/docker-avorion?label=stable&sort=semver
-[7]: https://img.shields.io/github/v/release/lightlike/docker-avorion?include_prereleases&label=beta&sort=semver
+[6]: https://img.shields.io/github/v/release/rfvgyhn/docker-avorion?label=stable&sort=semver
+[7]: https://img.shields.io/github/v/release/rfvgyhn/docker-avorion?include_prereleases&label=beta&sort=semver
