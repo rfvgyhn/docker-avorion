@@ -192,7 +192,7 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
-            INSTALL_ARGS=" -beta beta"
+            INSTALL_ARGS="-beta beta"
 
       # Create tag for version
       # https://github.com/mathieudutour/github-tag-action

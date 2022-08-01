@@ -5,7 +5,7 @@ RUN set -x \
 	&& "${STEAMCMDDIR}/steamcmd.sh" \
 		+force_install_dir /home/steam/avorion-dedicated \
 		+login anonymous \
-		+app_update 565060$INSTALL_ARGS validate \
+		+app_update 565060 $INSTALL_ARGS validate \
 		+quit
 WORKDIR /home/steam/avorion-dedicated
 RUN rm -r steamapps && \
