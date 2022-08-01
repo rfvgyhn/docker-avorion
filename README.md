@@ -2,11 +2,12 @@
 
 [Avorion][0] dedicated server
 
-Branch | Size             | Version          
--------|------------------|---------------
-latest | [![Size][6]][2]  | [![Version][7]][2]
-stable | [![Size][8]][2]  | [![Version][9]][2]
-beta   | [![Size][10]][2] | [![Version][11]][2]
+| Branch        | Version            |
+| ------------- | ------------------ |
+| stable/latest | [![Version][6]][2] |
+| beta          | [![Version][7]][2] |
+
+>  `beta` might not be accurate if the version number is the same as `stable`
 
 ## Usage
 
@@ -42,10 +43,9 @@ If you enable RCON in `settings.ini`, make sure you also forward the port in doc
 
 ## Docker Images
 
-The `latest` tag will follow the latest [avorion server][1] release
-(including beta releases).
+The `latest` and `stable` tag will follow the latest stable (non-beta) [avorion server][1] release.
 
-The `stable` tag will follow the latest stable (non-beta) [avorion server][1] release.
+The `beta` tag will follow the latest beta [avorion server][1] release.
 
 You can specify a specific version using the available [tags][3]
 
@@ -56,9 +56,5 @@ You can specify a specific version using the available [tags][3]
 [3]: https://hub.docker.com/r/rfvgyhn/avorion/tags
 [4]: https://img.shields.io/docker/stars/rfvgyhn/avorion.svg
 [5]: https://img.shields.io/docker/pulls/rfvgyhn/avorion.svg
-[6]: https://img.shields.io/docker/image-size/rfvgyhn/avorion/latest
-[7]: https://img.shields.io/badge/v-2.2.0.39080--beta-blue
-[8]: https://img.shields.io/docker/image-size/rfvgyhn/avorion/stable
-[9]: https://img.shields.io/badge/v-2.1.0.37090-blue
-[10]: https://img.shields.io/docker/image-size/rfvgyhn/avorion/2.2.0.39080-beta
-[11]: https://img.shields.io/badge/v-2.2.0.39080--beta-blue
+[6]: https://img.shields.io/github/v/release/lightlike/docker-avorion?label=stable&sort=semver
+[7]: https://img.shields.io/github/v/release/lightlike/docker-avorion?include_prereleases&label=beta&sort=semver
