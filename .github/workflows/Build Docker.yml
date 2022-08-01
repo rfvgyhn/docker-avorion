@@ -39,10 +39,10 @@ jobs:
             "${STEAMCMDDIR}/steamcmd.sh" +force_install_dir /home/steam/avorion-dedicated +login anonymous +app_update 565060 validate +quit
             echo "::set-output name=version::$(/home/steam/avorion-dedicated/bin/AvorionServer --version)"
 
-      - name: Search for Tag in
+      - name: Search for Tag
         id: tag
         run: |
-          tag=git tag -l "v${{ steps.version.outputs.version }}"
+          tag=$(git tag -l "v${{ steps.version.outputs.version }}")
           if [ "$tag" == "${{ steps.version.outputs.version }}" ]; then
             echo "::set-output name=exists::true"
           else
