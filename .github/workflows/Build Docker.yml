@@ -43,9 +43,12 @@ jobs:
         id: tag
         run: |
           tag=$(git tag -l "v${{ steps.version.outputs.version }}")
-          if [ "$tag" == "${{ steps.version.outputs.version }}" ]; then
+          echo "Tag: ${tag}"
+          if [ "$tag" == "v${{ steps.version.outputs.version }}" ]; then
+            echo "Version exists"
             echo "::set-output name=exists::true"
           else
+            echo "Version does not exist"
             echo "::set-output name=exists::false"
           fi
 
