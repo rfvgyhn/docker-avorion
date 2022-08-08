@@ -19,6 +19,7 @@ env:
 
 jobs:
   stable:
+    if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -125,6 +126,7 @@ jobs:
           name: Release ${{ steps.tag_version.outputs.new_tag }}
 
   beta:
+    if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     permissions:
       contents: write
