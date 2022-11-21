@@ -11,7 +11,7 @@ WORKDIR /home/steam/avorion-dedicated
 RUN rm -r steamapps && \
     rm launcher.sh
 
-FROM debian:stretch-slim
+FROM debian:stable-slim
 LABEL org.opencontainers.image.title="Avorion Dedicated Server"
 LABEL org.opencontainers.image.url="https://www.avorion.net/"
 
