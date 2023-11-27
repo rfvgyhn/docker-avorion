@@ -5,7 +5,7 @@ RUN set -x \
 	&& "${STEAMCMDDIR}/steamcmd.sh" \
 		+force_install_dir /home/steam/avorion-dedicated \
 		+login anonymous \
-		+app_update 565060$INSTALL_ARGS validate \
+		+app_update 565060 $INSTALL_ARGS validate \
 		+quit
 WORKDIR /home/steam/avorion-dedicated
 RUN rm -r steamapps && \
@@ -35,16 +35,6 @@ EXPOSE 27000/udp
 EXPOSE 27003/udp
 EXPOSE 27020/udp
 EXPOSE 27021/udp
-
-ARG CREATED
-ARG REVISION
-ARG SOURCE
-ARG VERSION
-
-LABEL org.opencontainers.image.created=$CREATED
-LABEL org.opencontainers.image.revision=$REVISION
-LABEL org.opencontainers.image.source=$SOURCE
-LABEL org.opencontainers.image.version=$VERSION
 
 # down here we are basically copying the server.sh, since that one does not `exec`
 # since now the AvorionServer is pid1 we can use `stop` commands since SIGTERM is passed through
