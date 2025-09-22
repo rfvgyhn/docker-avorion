@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -ex
+set -e
 
 [[ $1 =~ ^[0-9.]+$ ]] || { echo "First arg should be version" >&2; exit 1; }
 [[ $2 =~ ^(stable|beta|both)$ ]] || { echo "Invalid channel (stable|beta|both)." >&2; exit 1; }

@@ -1,8 +1,7 @@
 FROM cm2network/steamcmd:steam as build
 ARG VERSION
 ARG INSTALL_ARGS
-RUN set -x \
-	&& "${STEAMCMDDIR}/steamcmd.sh" \
+RUN "${STEAMCMDDIR}/steamcmd.sh" \
 		+force_install_dir /home/steam/avorion-dedicated \
 		+login anonymous \
 		+app_update 565060$INSTALL_ARGS validate \
@@ -16,13 +15,11 @@ LABEL org.opencontainers.image.title="Avorion Dedicated Server"
 LABEL org.opencontainers.image.url="https://www.avorion.net/"
 
 ARG DEBIAN_FRONTEND=noninteractive
-RUN set -x \
-    && apt-get update \
+RUN apt-get update \
     && apt-get install -y --no-install-recommends --no-install-suggests \
         ca-certificates libsdl2-2.0-0 \
     && rm -rf /var/lib/apt/lists/*
-RUN set -x \
-    && useradd -m steam \
+RUN useradd -m steam \
     && mkdir -p /home/steam/.avorion/galaxies/avorion_galaxy \
     && chown -R steam:steam /home/steam
 WORKDIR /home/steam/avorion-dedicated
